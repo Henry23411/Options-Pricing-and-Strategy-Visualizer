@@ -10,6 +10,11 @@ public class options_pricing {
 			String option = scan.nextLine();
 			option = option.toLowerCase();
 			
+			if (option != "call" || option != "put") {
+				System.out.println("That is an invalid input.");
+				System.exit(0);
+			}
+			
 			System.out.print("Stock Price(S): ");
 			S = scan.nextDouble();
 			
@@ -34,10 +39,7 @@ public class options_pricing {
 				double put_price = options_calculations.put_calc (S, K, t, r, stdev);
 				System.out.print("Option Price is: " + put_price);
 			}
-			
-			else {
-				System.out.println("Sorry that is an invalid input.");
-			}
+
 		}
 	}
 }
