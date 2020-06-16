@@ -30,12 +30,16 @@ public class options_pricing {
 			
 			if (option.equals ("call")) {
 				double call_price = options_calculations.call_calc (S, X, t, q, r, stdev);
-				System.out.print("Option Price is: " + call_price);	
+				System.out.println("Option Price is: " + call_price);	
+				double call_delta = options_calculations.call_delta_calc (S, X, t, q, r, stdev);
+				System.out.print("Delta: " + call_delta);
 			}
 			
 			else if (option.equals("put")) {
 				double put_price = options_calculations.put_calc (S, X, t, q, r, stdev);
-				System.out.print("Option Price is: " + put_price);
+				System.out.println("Option Price is: " + put_price);
+				double put_delta = options_calculations.put_delta_calc (S, X, t, q, r, stdev);
+				System.out.print("Delta: " + put_delta);
 			}
 
 		}

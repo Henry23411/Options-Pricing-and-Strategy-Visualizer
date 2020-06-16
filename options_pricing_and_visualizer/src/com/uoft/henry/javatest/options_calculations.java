@@ -19,8 +19,7 @@ public class options_calculations {
 		double price = (S * e1 * nd1) - (X * e2 * nd2);
 		
 		BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
-        return price = bd.doubleValue(); // rounding price to hearest hundredth
-		
+        return price = bd.doubleValue(); // rounding price to hearest hundredth	
 	}
 	
 	public static double put_calc (double S, double X, double t, double q, double r, double stdev) {
@@ -39,4 +38,35 @@ public class options_calculations {
 		BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
         return price = bd.doubleValue(); // rounding price to hearest hundredth
 	}
+	
+	public static double call_delta_calc (double S, double X, double t, double q,double r, double stdev) {
+		double a = Math.log(S/X);
+		double b = ((r + ((stdev * stdev) / 2)) * t);
+		double c = stdev * Math.sqrt(t);
+		double d1 = (a+b)/c;
+		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
+		double e1 = Math.exp(-q * t);
+		double call_delta_calc = e1 * nd1;
+		
+		BigDecimal bd = new BigDecimal(call_delta_calc).setScale(2, RoundingMode.HALF_UP);
+        return call_delta_calc = bd.doubleValue(); // rounding price to hearest hundredth	
+	}
+	
+	public static double put_delta_calc (double S, double X, double t, double q,double r, double stdev) {
+		double a = Math.log(S/X);
+		double b = ((r + ((stdev * stdev) / 2)) * t);
+		double c = stdev * Math.sqrt(t);
+		double d1 = (a+b)/c;
+		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
+		double e1 = Math.exp(-q * t);
+		double put_delta_calc = e1 * (nd1 - 1);
+		
+		BigDecimal bd = new BigDecimal(put_delta_calc).setScale(2, RoundingMode.HALF_UP);
+        return put_delta_calc = bd.doubleValue(); // rounding price to hearest hundredth
+	}
+	
+	//public static double gamma_calc (double S, double X, double t, double q,double r, double stdev) {
+		
+	//	return gamma;
+	//}
 }
