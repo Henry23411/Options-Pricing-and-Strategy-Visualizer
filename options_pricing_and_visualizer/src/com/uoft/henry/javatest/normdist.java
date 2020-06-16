@@ -6,7 +6,7 @@ public class normdist {
 	}
 	static double getAreaUnderNormalCurve(double z1, double z2) {
 	    double area = 0.0;
-	    final int rectangles = 100000; // basically using riemann sum
+	    final int rectangles = 100000; // Basically using riemann sum to find area under curve to determine probability
 	    final double width = (z2 - z1) / rectangles;
 	    for(int i = 0; i < rectangles; i++)
 	        area += width * getNormalProbabilityAtZ(width * i + z1);
