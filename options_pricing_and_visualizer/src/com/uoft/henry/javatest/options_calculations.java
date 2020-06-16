@@ -33,6 +33,7 @@ public class options_calculations {
 		double e = Math.exp(-r * t);
 		
 		double price = (K * e * nd2) - (S * nd1);
+		
 		BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
         return price = bd.doubleValue();
 	}
