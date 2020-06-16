@@ -5,14 +5,26 @@ import java.math.RoundingMode;
 
 public class options_calculations {
 	
+	static double getNormalProbabilityAtZ(double z) {
+	    return Math.exp(-Math.pow(z, 2) / 2) / Math.sqrt(2 * Math.PI);
+	}
+	static double getAreaUnderNormalCurve(double z1, double z2) {
+	    double area = 0.0;
+	    final int rectangles = 100000; // Use riemann sum to find area under curve to determine probability
+	    final double width = (z2 - z1) / rectangles;
+	    for(int i = 0; i < rectangles; i++)
+	        area += width * getNormalProbabilityAtZ(width * i + z1);
+	    return area;
+	}
+	
 	public static double call_calc (double S, double X, double t, double q,double r, double stdev) {
 		double a = Math.log(S/X); // ln(S0/K)
 		double b = ((r + ((stdev * stdev) / 2)) * t); // (r+σ2/2)t
 		double c = stdev * Math.sqrt(t); // σ√t
 		double d1 = (a+b)/c;
 		double d2 = d1 - c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
-		double nd2 = normdist.getAreaUnderNormalCurve(-5, d2);
+		double nd1 = getAreaUnderNormalCurve(-5, d1);
+		double nd2 = getAreaUnderNormalCurve(-5, d2);
 		double e1 = Math.exp(-q * t);
 		double e2 = Math.exp(-r * t);
 		
@@ -28,8 +40,8 @@ public class options_calculations {
 		double c = stdev * Math.sqrt(t); // σ√t
 		double d1 = (a+b)/c;
 		double d2 = d1 - c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, -d1);
-		double nd2 = normdist.getAreaUnderNormalCurve(-5, -d2);
+		double nd1 = getAreaUnderNormalCurve(-5, -d1);
+		double nd2 = getAreaUnderNormalCurve(-5, -d2);
 		double e1 = Math.exp(-r * t);
 		double e2 = Math.exp(-q * t);
 		
@@ -44,7 +56,7 @@ public class options_calculations {
 		double b = ((r + ((stdev * stdev) / 2)) * t);
 		double c = stdev * Math.sqrt(t);
 		double d1 = (a+b)/c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
+		double nd1 = getAreaUnderNormalCurve(-5, d1);
 		double e1 = Math.exp(-q * t);
 		double call_delta_calc = e1 * nd1;
 		
@@ -57,7 +69,7 @@ public class options_calculations {
 		double b = ((r + ((stdev * stdev) / 2)) * t);
 		double c = stdev * Math.sqrt(t);
 		double d1 = (a+b)/c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
+		double nd1 = getAreaUnderNormalCurve(-5, d1);
 		double e1 = Math.exp(-q * t);
 		double put_delta_calc = e1 * (nd1 - 1);
 		
@@ -85,8 +97,8 @@ public class options_calculations {
 		double c = stdev * Math.sqrt(t); // σ√t
 		double d1 = (a+b)/c;
 		double d2 = d1 - c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
-		double nd2 = normdist.getAreaUnderNormalCurve(-5, d2);
+		double nd1 = getAreaUnderNormalCurve(-5, d1);
+		double nd2 = getAreaUnderNormalCurve(-5, d2);
 		double e1 = Math.exp(-q * t);
 		double e2 = Math.exp(-r * t);
 		double e3 = Math.exp((-(d1 * d1) / 2));
@@ -107,8 +119,8 @@ public class options_calculations {
 		double c = stdev * Math.sqrt(t); // σ√t
 		double d1 = (a+b)/c;
 		double d2 = d1 - c;
-		double nd1 = normdist.getAreaUnderNormalCurve(-5, d1);
-		double nd2 = normdist.getAreaUnderNormalCurve(-5, d2);
+		double nd1 = getAreaUnderNormalCurve(-5, d1);
+		double nd2 = getAreaUnderNormalCurve(-5, d2);
 		double e1 = Math.exp(-q * t);
 		double e2 = Math.exp(-r * t);
 		double e3 = Math.exp((-(d1 * d1) / 2));
