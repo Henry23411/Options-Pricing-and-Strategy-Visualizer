@@ -48,6 +48,8 @@ public class options_pricing {
 				System.out.print("Delta: " + put_delta);
 				double gamma = options_calculations.gamma_calc (S, X, t, q, r, stdev);
 				System.out.print("\tGamma: " + gamma);
+				double put_theta = options_calculations.put_theta_calc (S, X, t, q, r, stdev);
+				System.out.print("\tTheta: " + put_theta);
 			}
 			
 			
