@@ -4,7 +4,10 @@ import java.util.Scanner;
 public class options_pricing {
 	
 	public static void main(String args[]) {
-		double S, X, t, q, r, stdev;
+		double S, X, q, r, stdev; //double S, X, t, q, r, stdev;
+		
+		double t = 0;
+		
 		try (Scanner scan = new Scanner (System.in)) {
 			System.out.print("Enter option type (call/put): ");
 			String option = scan.nextLine();
@@ -16,10 +19,10 @@ public class options_pricing {
 			System.out.print("Strike Price: ");
 			X = scan.nextDouble();
 			
-			System.out.print("Time to exprations (in years): ");
+			System.out.print("Time to exprations: "); // end with yr for years, or mo for months
 			t = scan.nextDouble();
 			
-			System.out.print("Dividend Yield (compounded continuously): ");
+			System.out.print("Dividend Yield: ");
 			q = scan.nextDouble();
 			
 			System.out.print("Annual Risk Free Rate: ");
@@ -29,6 +32,7 @@ public class options_pricing {
 			stdev = scan.nextDouble();
 			
 			System.out.println("----------");
+			
 			
 			if (option.equals ("call")) {
 				double call_price = options_calculations.call_calc (S, X, t, q, r, stdev);
@@ -52,10 +56,6 @@ public class options_pricing {
 				System.out.print("\tTheta: " + put_theta);
 			}
 			
-			
-			
-			
-
 		}
 	}
 }
