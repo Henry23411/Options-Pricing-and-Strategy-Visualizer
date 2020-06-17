@@ -10,7 +10,7 @@ public class options_calculations {
 	}
 	static double getAreaUnderNormalCurve(double z1, double z2) {
 	    double area = 0.0;
-	    final int rectangles = 100000; // Use riemann sum to find area under curve to determine probability
+	    final int rectangles = 100000; // Use riemann sum to determine probability when given Z values
 	    final double width = (z2 - z1) / rectangles;
 	    for(int i = 0; i < rectangles; i++)
 	        area += width * getNormalProbabilityAtZ(width * i + z1);
