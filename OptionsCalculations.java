@@ -30,7 +30,7 @@ class OptionsCalculations {
 		double price = (S * e1 * nd1) - (X * e2 * nd2);
 		
 		BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
-        return price = bd.doubleValue(); // rounding price to hearest hundredth	
+        return price = bd.doubleValue(); // rounding price to nearest hundredth	
 	}
 	
 	public static double put_calc (double S, double X, double t, double q, double r, double stdev) {
@@ -47,7 +47,7 @@ class OptionsCalculations {
 		double price = (X * e1 * nd2) - (S * e2 * nd1);
 		
 		BigDecimal bd = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
-        return price = bd.doubleValue(); // rounding price to hearest hundredth
+        return price = bd.doubleValue(); // rounding price to nearest hundredth
 	}
 	
 	public static double call_delta_calc (double S, double X, double t, double q,double r, double stdev) {
@@ -60,7 +60,7 @@ class OptionsCalculations {
 		double call_delta_calc = e1 * nd1;
 		
 		BigDecimal bd = new BigDecimal(call_delta_calc).setScale(3, RoundingMode.HALF_UP);
-        return call_delta_calc = bd.doubleValue(); // rounding price to hearest hundredth	
+        return call_delta_calc = bd.doubleValue(); // rounding price to nearest hundredth	
 	}
 	
 	public static double put_delta_calc (double S, double X, double t, double q,double r, double stdev) {
@@ -73,7 +73,7 @@ class OptionsCalculations {
 		double put_delta_calc = e1 * (nd1 - 1);
 		
 		BigDecimal bd = new BigDecimal(put_delta_calc).setScale(3, RoundingMode.HALF_UP);
-        return put_delta_calc = bd.doubleValue(); // rounding price to hearest hundredth
+        return put_delta_calc = bd.doubleValue(); // rounding price to nearest hundredth
 	}
 	
 	public static double gamma_calc (double S, double X, double t, double q,double r, double stdev) {
@@ -87,7 +87,7 @@ class OptionsCalculations {
 		double gamma_calc = (e1 / (S * c)) * (1 / Math.sqrt(2 * Math.PI)) * e3;
 		
 		BigDecimal bd = new BigDecimal(gamma_calc).setScale(3, RoundingMode.HALF_UP);
-        return gamma_calc = bd.doubleValue(); // rounding price to hearest hundredth
+        return gamma_calc = bd.doubleValue(); // rounding price to nearest hundredth
 	}
 	
 	public static double call_theta_calc (double S, double X, double t, double q,double r, double stdev) {
@@ -109,7 +109,7 @@ class OptionsCalculations {
 		double call_theta_calc = (-a1 - a2 + a3);
 		
 		BigDecimal bd = new BigDecimal(call_theta_calc).setScale(3, RoundingMode.HALF_UP);
-        return call_theta_calc = bd.doubleValue(); // rounding price to hearest hundredth
+        return call_theta_calc = bd.doubleValue(); // rounding price to nearest hundredth
 	}
 	
 	public static double put_theta_calc (double S, double X, double t, double q,double r, double stdev) {
@@ -131,6 +131,6 @@ class OptionsCalculations {
 		double put_theta_calc = (-a1 + a2 - a3);
 		
 		BigDecimal bd = new BigDecimal(put_theta_calc).setScale(3, RoundingMode.HALF_UP);
-        return put_theta_calc = bd.doubleValue(); // rounding price to hearest hundredth
+        return put_theta_calc = bd.doubleValue(); // rounding price to nearest hundredth
 	}
 }
