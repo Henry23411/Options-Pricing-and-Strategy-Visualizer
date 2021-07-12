@@ -1,9 +1,8 @@
-package com.uoft.henry.javatest;
 import java.lang.Math;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class options_calculations {
+class OptionsCalculations {
 	
 	static double getNormalProbabilityAtZ(double z) {
 	    return Math.exp(-Math.pow(z, 2) / 2) / Math.sqrt(2 * Math.PI);
